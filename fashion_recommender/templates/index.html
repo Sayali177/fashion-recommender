@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fashion Recommendation System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Fashion Recommendation System 👗</h1>
+
+    <form method="post" class="card">
+        <label>Choose Colour</label>
+        <input name="colour" placeholder="red, blue, black" required>
+
+        <label>Max Price</label>
+        <input name="price" type="number" required>
+
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if results %}
+        <h2>Recommended Products</h2>
+
+        <div class="grid">
+        {% for r in results %}
+            <div class="product">
+                <img src="{{ r.img }}" alt="image">
+                <h3>{{ r.name }}</h3>
+                <p>Colour: {{ r.colour }}</p>
+                <p>₹ {{ r.price }}</p>
+                <p>Brand: {{ r.brand }}</p>
+            </div>
+        {% endfor %}
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
